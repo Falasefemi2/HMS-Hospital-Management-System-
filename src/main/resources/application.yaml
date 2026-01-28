@@ -1,20 +1,40 @@
+jwt:
+  secret: ${SECRET_KEY}
+
+admin:
+  password: ${ADMIN_PASS}
 
 spring:
   application:
     name: hospitalmanagement
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_NAME}
+    password: ${MAIL_PASS}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   datasource:
-    url: jdbc:h2:mem:hospitaldb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/hms_db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
-    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
 
   h2:
     console:
