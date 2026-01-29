@@ -30,7 +30,9 @@ public class SecurityConfig {
                                 "/hms/account/login",
                                 "/hms/account/forgot/password",
                                 "/hms/account/reset/password",
-                                "/hms/staff/change/temp/password"
+                                "/hms/staff/change/temp/password",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**"
                         ).permitAll()
                         .requestMatchers("/hms/admin/**").hasRole("ADMIN")
                         .requestMatchers("/hms/doctor/**").authenticated()
