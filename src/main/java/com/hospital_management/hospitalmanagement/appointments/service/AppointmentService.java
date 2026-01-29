@@ -36,7 +36,7 @@ public class AppointmentService {
     private final DepartmentRepo departmentRepo;
     private final AuditService auditService;
 
-    @PreAuthorize("hasRole('PATIENT')")
+    @PreAuthorize("hasAuthority('ROLE_PATIENT')")
     @Transactional
     public void bookAppointment(AppUser appUser, AppointmentRequest request) {
         Patient patient = appUser.getPatient();
@@ -94,7 +94,7 @@ public class AppointmentService {
         );
     }
 
-    @PreAuthorize("hasAnyRole('DOCTOR', 'PATIENT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_DOCTOR', 'ROLE_PATIENT')")
     @Transactional
     public void cancelAppointment(AppUser appUser, UUID appointmentId) {
         Appointment appointment = appointmentRepo.findById(appointmentId)
@@ -130,7 +130,7 @@ public class AppointmentService {
         );
     }
 
-    @PreAuthorize("hasAnyRole('DOCTOR', 'PATIENT', 'ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_DOCTOR', 'ROLE_PATIENT', 'ROLE_ADMIN')")
     @Transactional
     public void rescheduleAppointment(
             AppUser appUser,
@@ -187,7 +187,7 @@ public class AppointmentService {
         appointmentRepo.save(appointment);
     }
 
-    @PreAuthorize("hasRole('DOCTOR')")
+    @PreAuthorize("hasAuthority('ROLE_DOCTOR')")
     @Transactional
     public void confirmAppointment(AppUser appUser, UUID appointmentId) {
         if (appUser.getRole() != Role.ROLE_DOCTOR) {
@@ -214,7 +214,7 @@ public class AppointmentService {
         appointmentRepo.save(appointment);
     }
 
-    @PreAuthorize("hasAnyRole('DOCTOR', 'ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_DOCTOR', 'ROLE_ADMIN')")
     @Transactional
     public void markNoShow(AppUser appUser, UUID appointmentId) {
         Appointment appointment = appointmentRepo.findById(appointmentId)
@@ -246,7 +246,7 @@ public class AppointmentService {
         appointmentRepo.save(appointment);
     }
 
-    @PreAuthorize("hasAnyRole('DOCTOR', 'ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_DOCTOR', 'ROLE_ADMIN')")
     @Transactional
     public void completeAppointment(AppUser appUser, UUID appointmentId) {
         Appointment appointment = appointmentRepo.findById(appointmentId)
@@ -274,7 +274,7 @@ public class AppointmentService {
         appointmentRepo.save(appointment);
     }
 
-    @PreAuthorize("hasRole('PATIENT')")
+    @PreAuthorize("hasAuthority('ROLE_PATIENT')")
     @Transactional(readOnly = true)
     public PatientAppointmentResponse viewPatientAppointment(AppUser patient, UUID appointmentId) {
         Appointment appointment = appointmentRepo.findById(appointmentId)
@@ -298,7 +298,7 @@ public class AppointmentService {
         );
     }
 
-    @PreAuthorize("hasRole('DOCTOR')")
+    @PreAuthorize("hasAuthority('ROLE_DOCTOR')")
     @Transactional(readOnly = true)
     public Page<DoctorAppointmentResponse> viewDoctorAppointments(Pageable pageable, UUID doctorId) {
         AppUser doctor = appUserRepo.findById(doctorId)

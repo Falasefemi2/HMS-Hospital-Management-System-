@@ -34,7 +34,7 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
-                        .requestMatchers("/hms/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/hms/admin/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/hms/doctor/**").authenticated()
                         .requestMatchers("/hms/lab_tech/**").authenticated()
                         .requestMatchers("/hms/patient/**").authenticated()
