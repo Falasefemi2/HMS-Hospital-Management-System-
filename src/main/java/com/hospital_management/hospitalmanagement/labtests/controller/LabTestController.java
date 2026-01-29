@@ -5,6 +5,7 @@ import com.hospital_management.hospitalmanagement.labtests.dto.LabTestRecord;
 import com.hospital_management.hospitalmanagement.labtests.dto.LabTestRequest;
 import com.hospital_management.hospitalmanagement.labtests.dto.LabTestResponse;
 import com.hospital_management.hospitalmanagement.labtests.service.LabTestService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class LabTestController {
     private final LabTestService labTestService;
 

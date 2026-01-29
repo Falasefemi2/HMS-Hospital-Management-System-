@@ -7,6 +7,7 @@ import com.hospital_management.hospitalmanagement.appointments.dto.RescheduleReq
 import com.hospital_management.hospitalmanagement.appointments.entity.Appointment;
 import com.hospital_management.hospitalmanagement.appointments.service.AppointmentService;
 import com.hospital_management.hospitalmanagement.auth.entity.AppUser;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class AppointmentController {
     private final AppointmentService appointmentService;
 

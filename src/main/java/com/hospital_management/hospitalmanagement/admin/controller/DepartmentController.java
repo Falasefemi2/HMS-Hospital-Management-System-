@@ -3,6 +3,7 @@ package com.hospital_management.hospitalmanagement.admin.controller;
 import com.hospital_management.hospitalmanagement.admin.dto.DepartmentRequest;
 import com.hospital_management.hospitalmanagement.admin.dto.DepartmentResponse;
 import com.hospital_management.hospitalmanagement.admin.service.DepartmentService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class DepartmentController {
     private final DepartmentService departmentService;
 

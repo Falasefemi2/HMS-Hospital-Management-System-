@@ -5,6 +5,7 @@ import com.hospital_management.hospitalmanagement.patient.dto.ProfileRequest;
 import com.hospital_management.hospitalmanagement.patient.dto.ProfileResponse;
 import com.hospital_management.hospitalmanagement.patient.dto.UpdateProfileRequest;
 import com.hospital_management.hospitalmanagement.patient.service.PatientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class PatientController {
     private final PatientService patientService;
 

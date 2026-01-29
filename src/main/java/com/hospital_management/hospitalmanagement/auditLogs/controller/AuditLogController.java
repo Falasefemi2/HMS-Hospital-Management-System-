@@ -2,6 +2,7 @@ package com.hospital_management.hospitalmanagement.auditLogs.controller;
 
 import com.hospital_management.hospitalmanagement.auditLogs.entity.AuditLog;
 import com.hospital_management.hospitalmanagement.auditLogs.service.AuditService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/hms/admin/audit-logs")
+@SecurityRequirement(name = "bearerAuth")
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @AllArgsConstructor
 public class AuditLogController {

@@ -2,6 +2,7 @@ package com.hospital_management.hospitalmanagement.admin.controller;
 
 import com.hospital_management.hospitalmanagement.admin.dto.*;
 import com.hospital_management.hospitalmanagement.admin.service.AdminService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class AdminController {
     private final AdminService adminService;
 

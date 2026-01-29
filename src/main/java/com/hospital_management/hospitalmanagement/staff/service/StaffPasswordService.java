@@ -1,8 +1,9 @@
-package com.hospital_management.hospitalmanagement.staff;
+package com.hospital_management.hospitalmanagement.staff.service;
 
 import com.hospital_management.hospitalmanagement.auth.entity.AppUser;
 import com.hospital_management.hospitalmanagement.auth.repo.AppUserRepo;
 import com.hospital_management.hospitalmanagement.roles.Role;
+import com.hospital_management.hospitalmanagement.staff.dto.ChangeTempPasswordRequest;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

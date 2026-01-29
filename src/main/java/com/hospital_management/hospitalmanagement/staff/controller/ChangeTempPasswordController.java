@@ -1,5 +1,7 @@
-package com.hospital_management.hospitalmanagement.staff;
+package com.hospital_management.hospitalmanagement.staff.controller;
 
+import com.hospital_management.hospitalmanagement.staff.dto.ChangeTempPasswordRequest;
+import com.hospital_management.hospitalmanagement.staff.service.StaffPasswordService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -5,6 +5,7 @@ import com.hospital_management.hospitalmanagement.prescriptions.dto.PatientPresc
 import com.hospital_management.hospitalmanagement.prescriptions.dto.PrescriptionRequest;
 import com.hospital_management.hospitalmanagement.prescriptions.dto.PrescriptionResponse;
 import com.hospital_management.hospitalmanagement.prescriptions.service.PrescriptionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class PrescriptionController {
     private final PrescriptionService prescriptionService;
 

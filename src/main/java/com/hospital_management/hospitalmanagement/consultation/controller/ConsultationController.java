@@ -4,6 +4,7 @@ import com.hospital_management.hospitalmanagement.auth.entity.AppUser;
 import com.hospital_management.hospitalmanagement.consultation.dto.ConsultationRequest;
 import com.hospital_management.hospitalmanagement.consultation.dto.ConsultationResponse;
 import com.hospital_management.hospitalmanagement.consultation.service.ConsultationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class ConsultationController {
     private final ConsultationService consultationService;
 
