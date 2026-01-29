@@ -27,7 +27,7 @@ public class DepartmentService {
     private final DepartmentRepo departmentRepo;
     private final DepartmentResponseMapper departmentResponseMapper;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @Transactional
     public void createDepartment(DepartmentRequest request) {
         if (departmentRepo.existsByName(request.name())) {
