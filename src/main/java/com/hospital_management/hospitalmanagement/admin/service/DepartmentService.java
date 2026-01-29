@@ -27,7 +27,7 @@ public class DepartmentService {
     private final DepartmentRepo departmentRepo;
     private final DepartmentResponseMapper departmentResponseMapper;
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional
     public void createDepartment(DepartmentRequest request) {
         if (departmentRepo.existsByName(request.name())) {
@@ -40,7 +40,7 @@ public class DepartmentService {
         departmentRepo.save(department);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional
     public void updateDepartment(
             DepartmentRequest request,
@@ -54,7 +54,7 @@ public class DepartmentService {
         departmentRepo.save(department);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional
     public void deleteDepartment(UUID departmentId) {
         Department department = departmentRepo.findById(departmentId)
@@ -63,7 +63,7 @@ public class DepartmentService {
         departmentRepo.delete(department);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional(readOnly = true)
     public Page<DepartmentResponse> geAllDepartments(Pageable pageable) {
         Page<Department> page = departmentRepo.findAll(pageable);
@@ -71,7 +71,7 @@ public class DepartmentService {
         return page.map(departmentResponseMapper::toDepartmentResponse);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @Transactional(readOnly = true)
     public DepartmentResponse getDepartmentId(UUID departmentId) {
         Department department = departmentRepo.findById(departmentId)

@@ -31,7 +31,7 @@ public class AdminService {
     private final EmailService emailService;
 
     @Transactional
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void registerStaff(CreateStaffRequest request) {
 
         if (request.role() != Role.ROLE_DOCTOR && request.role() != Role.ROLE_LAB_TECH) {
@@ -62,7 +62,7 @@ public class AdminService {
     }
 
     @Transactional
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void updateStaff(UUID staffId, UpdateStaffRequest request) {
         AppUser staff = appUserRepo.findById(staffId)
                 .orElseThrow(() -> new EntityNotFoundException("Staff not found"));
@@ -84,7 +84,7 @@ public class AdminService {
     }
 
     @Transactional
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void updateStaffStatus(UUID staffId, boolean active) {
         AppUser staff = appUserRepo.findById(staffId)
                 .orElseThrow(() -> new EntityNotFoundException("Staff not found"));
@@ -98,7 +98,7 @@ public class AdminService {
     }
 
     @Transactional(readOnly = true)
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public StaffResponse getStaffById(UUID staffId) {
         AppUser staff = appUserRepo.findById(staffId)
                 .orElseThrow(() -> new EntityNotFoundException("Staff not found"));
@@ -117,7 +117,7 @@ public class AdminService {
     }
 
     @Transactional(readOnly = true)
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public Page<StaffResponse> getAllStaff(Pageable pageable) {
        Page<AppUser> page = appUserRepo.findByRoleInAndActiveTrue(
                List.of(Role.ROLE_DOCTOR, Role.ROLE_LAB_TECH),
@@ -134,7 +134,7 @@ public class AdminService {
     }
 
     @Transactional
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteStaff(UUID staffId) {
         AppUser staff = appUserRepo.findById(staffId)
                 .orElseThrow(() -> new EntityNotFoundException("Staff not found"));
@@ -147,7 +147,7 @@ public class AdminService {
     }
 
     @Transactional
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void removeStaffDepartment(UpdateStaffDepartment request) {
         AppUser staff = appUserRepo.findById(request.staffId())
                 .orElseThrow(() -> new EntityNotFoundException("Staff not found"));
@@ -162,7 +162,7 @@ public class AdminService {
     }
 
     @Transactional(readOnly = true)
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public StaffDepartmentResponse getStaffDepartment(UUID staffId) {
         AppUser staff = appUserRepo.findById(staffId)
                 .orElseThrow(() -> new EntityNotFoundException("Staff not found"));

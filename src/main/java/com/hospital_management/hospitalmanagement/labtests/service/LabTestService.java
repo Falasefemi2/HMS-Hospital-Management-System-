@@ -29,7 +29,7 @@ public class LabTestService {
     private final ConsultationRepo consultationRepo;
     private final AuditService auditService;
 
-    @PreAuthorize("hasAuthority('ROLE_DOCTOR')")
+    @PreAuthorize("hasRole('DOCTOR')")
     @Transactional
     public void requestPatientTests(
             AppUser doctor,
@@ -57,7 +57,7 @@ public class LabTestService {
         );
     }
 
-    @PreAuthorize("hasAuthority('ROLE_LAB_TECH')")
+    @PreAuthorize("hasRole('LAB_TECH')")
     @Transactional
     public void recordPatientTests(AppUser labTech, LabTestRecord request) {
         if (labTech.getRole() != Role.ROLE_LAB_TECH) {
@@ -98,7 +98,7 @@ public class LabTestService {
         );
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_DOCTOR','ROLE_LAB_TECH')")
+    @PreAuthorize("hasAnyRole('DOCTOR', 'LAB_TECH')")
     @Transactional(readOnly = true)
     public List<LabTestResponse> viewPatientTest(
             AppUser appUser,

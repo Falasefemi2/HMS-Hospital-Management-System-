@@ -28,7 +28,7 @@ public class PrescriptionService {
     private final ConsultationRepo consultationRepo;
     private final AuditService auditService;
 
-    @PreAuthorize("hasAuthority('ROLE_DOCTOR')")
+    @PreAuthorize("hasRole('DOCTOR')")
     @Transactional
     public void createPrescription(AppUser doctor, PrescriptionRequest request) {
         Consultation consultation = consultationRepo.findById(request.consultationId())
@@ -97,7 +97,7 @@ public class PrescriptionService {
         );
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_DOCTOR')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
     @Transactional(readOnly = true)
     public List<PrescriptionResponse> viewMyPatientsPrescriptions(
             AppUser appUser,

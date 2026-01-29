@@ -24,7 +24,7 @@ public class ConsultationService {
     private final ConsultationRepo consultationRepo;
     private final AppointmentRepo appointmentRepo;
 
-    @PreAuthorize("hasAuthority('ROLE_DOCTOR')")
+    @PreAuthorize("hasRole('DOCTOR')")
     @Transactional
     public void createConsultation(AppUser doctor, ConsultationRequest request) {
         if (doctor.getRole() != Role.ROLE_DOCTOR) {
@@ -62,7 +62,7 @@ public class ConsultationService {
         consultationRepo.save(consultation);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_DOCTOR')")
+    @PreAuthorize("hasRole('DOCTOR')")
     @Transactional
     public ConsultationResponse viewConsultation(AppUser appUser, UUID appointmentId) {
         Appointment appointment = appointmentRepo.findById(appointmentId)
