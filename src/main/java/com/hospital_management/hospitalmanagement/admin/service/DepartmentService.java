@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +67,9 @@ public class DepartmentService {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @Transactional(readOnly = true)
     public Page<DepartmentResponse> geAllDepartments(Pageable pageable) {
+        System.out.println("AUTH = " +
+                SecurityContextHolder.getContext().getAuthentication());
+
         Page<Department> page = departmentRepo.findAll(pageable);
 
         return page.map(departmentResponseMapper::toDepartmentResponse);

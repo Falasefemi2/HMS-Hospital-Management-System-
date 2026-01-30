@@ -5,8 +5,11 @@ import com.hospital_management.hospitalmanagement.admin.service.AdminService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,7 +55,11 @@ public class AdminController {
     }
 
     @GetMapping("hms/admin/staffs")
-    public Page<StaffResponse> getAllStaff(Pageable pageable) {
+    public Page<StaffResponse> getAllStaff(
+            @ParameterObject
+            @PageableDefault(sort = "id", direction = Sort.Direction.ASC)
+            Pageable pageable
+    ) {
         return adminService.getAllStaff(pageable);
     }
 
