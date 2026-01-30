@@ -1,5 +1,7 @@
 package com.hospital_management.hospitalmanagement.auth.security;
 
+import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
