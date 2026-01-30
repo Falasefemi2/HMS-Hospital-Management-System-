@@ -24,7 +24,7 @@ This project is database-agnostic and works seamlessly with **PostgreSQL / Neon 
 * Created and owned by a doctor
 * Stores diagnosis and consultation notes
 
-### 💊 Prescriptions
+### Prescriptions
 
 * A consultation can have **multiple prescriptions**
 * Each prescription includes medication, dosage, and duration
