@@ -59,12 +59,18 @@ public class SecurityConfig {
      @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of(
-            "http://localhost:8080",
-            "https://hms-hospital-management-system-jzvt.onrender.com"
+        config.setAllowedOriginPatterns(List.of(
+                "http://localhost:*",
+                "https://*.onrender.com"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedHeaders(List.of(
+                "Authorization",
+                "Content-Type",
+                "Accept",
+                "Origin",
+                "X-Requested-With"
+        ));
         config.setExposedHeaders(List.of("Authorization"));
         config.setAllowCredentials(false);
 
