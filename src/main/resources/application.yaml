@@ -17,22 +17,15 @@ spring:
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${MAIL_NAME}
-    password: ${MAIL_PASS}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+  brevo:
+    sender-email: ${BREVO_SENDER_EMAIL}
+    api-key: ${BREVO_API_KEY}
+    sender-name: ${BREVO_SENDER_NAME}
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-auto
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
