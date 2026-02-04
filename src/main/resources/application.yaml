@@ -5,7 +5,8 @@ jwt:
   secret: ${SECRET_KEY}
 
 admin:
-  password: ${ADMIN_PASS}
+  email: "admin@example.com"
+  password: "Admin@123"
 
 spring:
   application:
