@@ -66,7 +66,7 @@ public class SecurityConfig {
                 "http://localhost:*",
                 "https://*.onrender.com"
         ));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH" "DELETE", "OPTIONS"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of(
                 "Authorization",
                 "Content-Type",
