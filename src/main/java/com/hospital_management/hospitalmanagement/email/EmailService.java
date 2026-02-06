@@ -43,12 +43,17 @@ public class EmailService {
                                 "name", brevoProperties.getSenderName(),
                                 "email", brevoProperties.getSenderEmail()
                         ),
-                        "to", new Map[]{Map.of("email", to)},
+                        "to", List.of(Map.of("email", to)),
                         "subject", subject,
                         "textContent", body
                 ))
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
+    }
+
+      public void sendTemporaryPassword(String to, String tempPassword) {
+        String body = "Your Temporary Password is: " + tempPassword + "\nPlease change it after logging in";
+        sendPasswordResetToken(to, "Your Temporary Password", body);
     }
 }
