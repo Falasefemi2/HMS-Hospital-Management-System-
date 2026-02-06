@@ -51,9 +51,4 @@ public class EmailService {
                 .bodyToMono(String.class)
                 .block();
     }
-
-    public void sendTemporaryPassword(String to, String tempPassword) {
-        String body = "Your Temporary Password is: " + tempPassword + "\nPlease change it after logging in";
-        sendPasswordResetToken(to, "Your Temporary Password", body);
-    }
 }
